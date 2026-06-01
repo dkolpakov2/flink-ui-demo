@@ -1,0 +1,36 @@
+import { create } from "zustand";
+
+interface AppState {
+  loading: boolean;
+  setLoading: (value: boolean) => void;
+
+  selectedDeploymentId?: string;
+  setSelectedDeploymentId: (
+    id?: string
+  ) => void;
+
+  deploymentBladeOpen: boolean;
+  setDeploymentBladeOpen: (
+    open: boolean
+  ) => void;
+}
+
+export const useAppStore =
+  create<AppState>((set) => ({
+    loading: false,
+
+    setLoading: (loading) =>
+      set({ loading }),
+
+    selectedDeploymentId: undefined,
+
+    setSelectedDeploymentId: (
+      selectedDeploymentId
+    ) => set({ selectedDeploymentId }),
+
+    deploymentBladeOpen: false,
+
+    setDeploymentBladeOpen: (
+      deploymentBladeOpen
+    ) => set({ deploymentBladeOpen })
+  }));
