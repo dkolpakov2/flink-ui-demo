@@ -263,11 +263,30 @@ Deployment details blade:
 ===============================================================================
 Create a Vite React TypeScript project
 1.
-npm create vite@latest azure-flink-portal -- --template react-ts
+Fix Git:
+git config --global core.autocrlf false
+git config --global core.eol lf
+
+# nvm install 20
+# nvm use 20
+# nvm alias default 20
+nvm install 18.18.0
+nvm use 18.18.0
+node -v
+rm -rf node_modules package-lock.json
+npm install
+npm ls @humanfs/types
+npm doctor
+npm view @vitejs/plugin-react version
+npm install -D vite@latest @vitejs/plugin-react@latest
+
+# npm create vite@latest azure-flink-portal -- --template react-ts
 2.
-cd azure-flink-portal
+# cd azure-flink-portal
 3.
 npm install
+npm config set engine-strict false
+npm audit fix --force
 4.
 npm install react-router-dom zustand framer-motion recharts sonner lucide-react
 5.
@@ -313,3 +332,33 @@ Next:
   6.  resource detail blades
   7.  mock REST service layer with latency/failure simulation
   8.  multi-step deployment wizard with defaults and validation
+
+--
+
+Node version
+
+- Recommended Node: 18.18.0
+
+Windows (nvm-windows):
+
+```powershell
+nvm install 18.18.0
+nvm use 18.18.0
+node -v
+```
+
+macOS / Linux (nvm):
+
+```bash
+nvm install 18.18.0
+nvm use 18.18.0
+node -v
+```
+
+If you prefer not to upgrade system Node immediately, add `engine-strict` false to npm config:
+
+```bash
+npm config set engine-strict false
+```
+
+Project helper files: a `.nvmrc` has been added at the repo root and in the `react/` folder to suggest Node 18.18.0.
