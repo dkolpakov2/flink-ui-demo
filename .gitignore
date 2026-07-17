@@ -25,7 +25,7 @@ replay_pid*
 
 .nvmrc
 react/.nvmrc
-react/components.json
-react/node_modules/
-react/package-lock.json
+#react/components.json
+#react/node_modules/
+#react/package-lock.json
 
